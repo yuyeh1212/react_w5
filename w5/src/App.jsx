@@ -28,12 +28,12 @@ function App() {
   } = useForm();
 
   useEffect(() => {
-    if (productModalRef.current) {
+    if (productModalRef.current && !productModalRef.currentInstance) {
       productModalRef.currentInstance = new Modal(productModalRef.current);
     }
     getProducts();
     getCart();
-  }, []);
+  }, [tempProduct]);
 
   const getProducts = async () => {
     setIsLoading(true); // 顯示全螢幕 Loading
